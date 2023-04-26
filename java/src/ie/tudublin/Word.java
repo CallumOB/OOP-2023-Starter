@@ -30,9 +30,9 @@ public class Word {
     public String toString() {
         String returnString = new String();
 
-        returnString += word;
+        returnString += word + ": ";
         for (int i = 0; i < follows.size(); i++) {
-            returnString += follows.get(i).getWord() + "(" + follows.get(i).getWordCount() + ")";
+            returnString += follows.get(i).getWord() + "(" + follows.get(i).getWordCount() + ") ";
         }
 
         return returnString;
@@ -40,7 +40,7 @@ public class Word {
 
     public boolean findFollows(String follow) {
         for (int i = 0; i < follows.size(); i++) {
-            if (follows.get(i).getWord() == follow) {
+            if (follows.get(i).getWord().equals(follow)) {
                 return true;
             }
         }
@@ -50,7 +50,7 @@ public class Word {
 
     public void increaseFollow(String follow) {
         for (int i = 0; i < follows.size(); i++) {
-            if (follows.get(i).getWord() == follow) {
+            if (follows.get(i).getWord().equals(follow)) {
                 follows.get(i).increaseCount();
             }
         }

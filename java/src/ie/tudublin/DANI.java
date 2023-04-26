@@ -22,6 +22,7 @@ public class DANI extends PApplet {
 	public void setup() {
 		colorMode(HSB);
 		loadFile();
+		printModel();
 	}
 
 	public void keyPressed() {
@@ -47,32 +48,38 @@ public class DANI extends PApplet {
 
 		for (int i = 0; i < fileArray.length; i++) {
 			fileArray[i].replaceAll("[^\\w\\s]", "");
-			fileArray[i].toLowerCase();
 
-			wordArray = split(fileArray[i], " ");
+			wordArray = split(fileArray[i].toLowerCase(), " ");
 
 			for (int j = 0; j < wordArray.length; j++) {
-				if (!findWord(wordArray[j])) {
+				if (findWord(wordArray[j]) == false) {
 					words.add(new Word(wordArray[j]));
 				}
 
-				if (i != words.size() - 1) {
-					if (words.get(i).getWord() == wordArray[j]) {
-						if (!words.get(i).findFollows(wordArray[j + 1])) {
-							words.get(i).getFollows().add(new Follow(wordArray[j + 1]));
-						} else {
-							words.get(i).increaseFollow(wordArray[j + 1]);
+				for (int k = 0; k < words.size(); k++) {
+					if (j != wordArray.length - 1) {
+						if (words.get(k).getWord().equals(wordArray[j])) {
+							if (words.get(k).findFollows(wordArray[j + 1])) {
+								words.get(k).increaseFollow(wordArray[j + 1]);
+							} else {
+								words.get(k).getFollows().add(new Follow(wordArray[j + 1]));
+							}
 						}
 					}
 				}
 			}
 		}
+	}
 
+	public void printModel() {
+		for (int i = 0; i < words.size(); i++) {
+			println(words.get(i));
+		}
 	}
 
 	public boolean findWord(String word) {
 		for (int i = 0; i < words.size(); i++) {
-			if (words.get(i).getWord() == word) {
+			if (words.get(i).getWord().equals(word)) {
 				return true;
 			}
 		}
