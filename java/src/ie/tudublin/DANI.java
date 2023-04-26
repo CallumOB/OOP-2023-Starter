@@ -22,6 +22,7 @@ public class DANI extends PApplet {
 		colorMode(HSB);
 		loadFile();
 		printModel();
+		createSonnet();
 	}
 
 	public void keyPressed() {
