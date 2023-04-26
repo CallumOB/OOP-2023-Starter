@@ -10,7 +10,6 @@ public class DANI extends PApplet {
 
 	public void settings() {
 		size(1000, 1000);
-		//fullScreen(SPAN);
 	}
 
     String[] sonnet;
@@ -27,7 +26,9 @@ public class DANI extends PApplet {
 	}
 
 	public void keyPressed() {
-
+		if (key == ' ') {
+			// do something 
+		}
 	}
 
 	float off = 0;
