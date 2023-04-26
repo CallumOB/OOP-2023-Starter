@@ -46,10 +46,10 @@ public class DANI extends PApplet {
 
 	public void loadFile() {
 		String[] wordArray;
-		fileArray = loadStrings("java/data/small.txt");
+		fileArray = loadStrings("java/data/shakespere.txt");
 
 		for (int i = 0; i < fileArray.length; i++) {
-			fileArray[i].replaceAll("[^\\w\\s]", "");
+			fileArray[i] = fileArray[i].replaceAll("[^\\w\\s]", "");
 
 			wordArray = split(fileArray[i].toLowerCase(), " ");
 
@@ -118,5 +118,7 @@ public class DANI extends PApplet {
 
 			println();
 		}
+
+		println();
 	}
 }
