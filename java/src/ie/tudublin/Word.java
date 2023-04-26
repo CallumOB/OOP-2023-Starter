@@ -37,5 +37,22 @@ public class Word {
 
         return returnString;
     }
-    
+
+    public boolean findFollows(String follow) {
+        for (int i = 0; i < follows.size(); i++) {
+            if (follows.get(i).getWord() == follow) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void increaseFollow(String follow) {
+        for (int i = 0; i < follows.size(); i++) {
+            if (follows.get(i).getWord() == follow) {
+                follows.get(i).increaseCount();
+            }
+        }
+    }
 }

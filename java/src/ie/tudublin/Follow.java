@@ -6,6 +6,10 @@ public class Follow {
 
     public Follow(String word) {
         this.word = word;
+        increaseCount();
+    }
+
+    public void increaseCount() {
         wordCount++;
     }
 
