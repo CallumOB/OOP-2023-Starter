@@ -8,12 +8,13 @@ public class DANI extends PApplet {
 
 	private ArrayList<Word> words = new ArrayList<>();
 	private String[] fileArray;
+	private int sonnetLines = 14;
+	private int wordCount = 8;
+	private String[][] sonnet = new String[sonnetLines][wordCount];
 
 	public void settings() {
 		size(1000, 1000);
 	}
-
-	String[] sonnet;
 
 	public String[] writeSonnet() {
 		return null;
@@ -28,6 +29,7 @@ public class DANI extends PApplet {
 	public void keyPressed() {
 		if (key == ' ') {
 			createSonnet();
+			printSonnet();
 		}
 	}
 
@@ -75,6 +77,8 @@ public class DANI extends PApplet {
 		for (int i = 0; i < words.size(); i++) {
 			println(words.get(i));
 		}
+
+		println();
 	}
 
 	public boolean findWord(String word) {
@@ -88,22 +92,31 @@ public class DANI extends PApplet {
 	}
 
 	public void createSonnet() {
-		int sonnetLines = 14;
-		int wordCount = 8;
-		String[][] sonnet = new String[sonnetLines][wordCount];
-
 		for (int i = 0; i < sonnetLines; i++) {
 			Word startingWord = words.get((int) random(0, words.size()));
 			sonnet[i][0] = startingWord.getWord();
 
 			if (startingWord.getFollows().size() != 0) {
-				for (int j = 1; j < startingWord.getFollows().size(); j++) {
+				// Starting this loop at 1 ensures there are 8 words including the first word
+				for (int j = 1; j <= startingWord.getFollows().size(); j++) {
 					if (j < wordCount) {
 						int randomWord = (int) random(0, startingWord.getFollows().size());
 						sonnet[i][j] = startingWord.getFollows().get(randomWord).getWord();
 					}
 				}
 			}
+		}
+	}
+
+	public void printSonnet() {
+		for (int i = 0; i < sonnetLines; i++) {
+			for (int j = 0; j < wordCount; j++) {
+				if(sonnet[i][j] != null) {
+					print(sonnet[i][j] + " ");
+				}
+			}
+
+			println();
 		}
 	}
 }
