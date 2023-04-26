@@ -99,7 +99,8 @@ public class DANI extends PApplet {
 			if (startingWord.getFollows().size() != 0) {
 				for (int j = 1; j < startingWord.getFollows().size(); j++) {
 					if (j < wordCount) {
-						sonnet[i][j] = startingWord.getFollows().get(j).getWord();
+						int randomWord = (int) random(0, startingWord.getFollows().size());
+						sonnet[i][j] = startingWord.getFollows().get(randomWord).getWord();
 					}
 				}
 			}
