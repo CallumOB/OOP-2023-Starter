@@ -27,7 +27,7 @@ public class DANI extends PApplet {
 
 	public void keyPressed() {
 		if (key == ' ') {
-			// do something
+			createSonnet();
 		}
 	}
 
@@ -85,5 +85,24 @@ public class DANI extends PApplet {
 		}
 
 		return false;
+	}
+
+	public void createSonnet() {
+		int sonnetLines = 14;
+		int wordCount = 8;
+		String[][] sonnet = new String[sonnetLines][wordCount];
+
+		for (int i = 0; i < sonnetLines; i++) {
+			Word startingWord = words.get((int) random(0, words.size()));
+			sonnet[i][0] = startingWord.getWord();
+
+			if (startingWord.getFollows().size() != 0) {
+				for (int j = 1; j < startingWord.getFollows().size(); j++) {
+					if (j < wordCount) {
+						sonnet[i][j] = startingWord.getFollows().get(j).getWord();
+					}
+				}
+			}
+		}
 	}
 }
