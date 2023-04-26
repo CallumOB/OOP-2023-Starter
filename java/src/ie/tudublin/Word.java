@@ -48,6 +48,7 @@ public class Word {
         return false;
     }
 
+    // Increases the frequency counter for the word specified by 'follow'. Useful for calling from other methods (DANI.loadFile).
     public void increaseFollow(String follow) {
         for (int i = 0; i < follows.size(); i++) {
             if (follows.get(i).getWord().equals(follow)) {

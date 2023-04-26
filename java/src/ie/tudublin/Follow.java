@@ -9,6 +9,7 @@ public class Follow {
         increaseCount();
     }
 
+    // Increases the amount of times the word has been found. Useful for calling from other methods.
     public void increaseCount() {
         wordCount++;
     }
