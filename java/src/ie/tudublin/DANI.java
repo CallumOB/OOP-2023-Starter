@@ -42,6 +42,7 @@ public class DANI extends PApplet {
 		textSize(20);
 		textAlign(CENTER, CENTER);
 
+		displaySonnet();
 	}
 
 	public void loadFile() {
@@ -120,5 +121,22 @@ public class DANI extends PApplet {
 		}
 
 		println();
+	}
+
+	public void displaySonnet() {
+		float topBorder = height * 0.25f;
+		float textGap = 25;
+		
+		for (int i = 0; i < sonnetLines; i++) {
+			String currentString = new String();
+			for (int j = 0; j < wordCount; j++) {
+				if (sonnet[i][j] != null) {
+					currentString += sonnet[i][j] + " ";
+				}
+			}
+
+			text(currentString, width / 2, topBorder + textGap);
+			textGap += 25;
+		}
 	}
 }
